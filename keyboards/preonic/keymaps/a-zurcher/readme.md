@@ -64,6 +64,3 @@ This is a German layout adapted to the ortholinear layout of the Preonic.
 |      |      |      |      |      |             |      |Lmouse|Dmouse|Umouse|Rmouse|
 `-----------------------------------------------------------------------------------'
 ````
-
-
-oOü+p+l#ööllloääääää###öölllopüü##ääöääüüäääüüllkkkkülllkkküüllkk
