@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   <  |   >  |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | print|      |      |      |      |             |      | Home | PgDn | PgUp | End  |
+ * | print|      |      |      |      |     Play    |      | Home | PgDn | PgUp | End  |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,      KC_F1,   KC_F2,         KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, KC_LBRC, KC_RBRC, _______,
   _______,      KC_F7,   KC_F8,         KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_SCLN, KC_QUOT, KC_NUHS, _______,
   KC_LSFT,      KC_NUBS, LSFT(KC_NUBS), _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  KC_PSCR,      _______, _______,       _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END
+  KC_PSCR,      _______, _______,       _______, _______, KC_MPLY, KC_MPLY, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END
 ),
 
 /* Raise
@@ -85,15 +85,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   |  |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | print|      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * | print|      |      |      |      |     Play    |      | Prev | Vol- | Vol+ | Next |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
-  KC_GRV,  _______, _______,       _______, _______, _______, _______, _______, _______, LSFT(KC_MINS), LSFT(KC_EQL),  _______,
-  _______, KC_F1,   KC_F2,         KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, KC_LBRC, LSFT(KC_RBRC), _______,
-  _______, KC_F7,   KC_F8,         KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_SCLN, KC_QUOT, LSFT(KC_NUHS), _______,
-  KC_LSFT, RALT(KC_NUBS), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  KC_PSCR, _______, _______,       _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+  KC_GRV,  _______,         _______, _______, _______, _______, _______, _______, _______, LSFT(KC_MINS), LSFT(KC_EQL),  _______,
+  _______, KC_F1,           KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, KC_LBRC,       LSFT(KC_RBRC), _______,
+  _______, KC_F7,           KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_SCLN, KC_QUOT,       LSFT(KC_NUHS), _______,
+  KC_LSFT, RALT(KC_NUBS),   _______, _______, _______, _______, _______, _______, _______, _______,       _______,       _______,
+  KC_PSCR, _______,         _______, _______, _______, KC_MPLY, KC_MPLY, _______, KC_MPRV, KC_VOLD,       KC_VOLU,       KC_MNXT
 ),
 
 /* Adjust (Lower + Raise)
