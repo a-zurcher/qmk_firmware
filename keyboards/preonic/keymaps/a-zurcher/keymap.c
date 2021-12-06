@@ -1,4 +1,4 @@
-/* Copyright 2015-2017 Jack Humbert
+/* Copyright 2015-2021 Jack Humbert
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,12 +38,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Z  |   U  |   I  |   O  |   P  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Yakuak|   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   #  | Shift|
- * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Y  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   -  | Enter|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |  GUI | LAlt | RAlt | LOWER|    Space    | RAISE| Left | Down |  Up  | Right|
+ * | Ctrl | SUPER| LAlt | RAlt | Lower|    Space    | Raise| Left | Down |  Up  | Right|
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTZ] = LAYOUT_preonic_grid(
@@ -54,6 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL,      KC_LGUI, KC_LALT, KC_RALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
+
 /* Lower
  * ,-----------------------------------------------------------------------------------.
  * |   °  |      |      |      |      |      |      |      |      |   ß  |   '  |      |
@@ -62,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |      |   Ö  |   Ä  |   #  |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |   <  |   >  |   ç  |      |      |      |      |      |      |      |      |
+ * |      |   <  |   >  |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | print|      |      |      |      |     Play    |      | Home | PgDn | PgUp | End  |
  * `-----------------------------------------------------------------------------------'
@@ -117,6 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R
 ),
 
+
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -153,6 +155,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             #ifdef BACKLIGHT_ENABLE
               backlight_step();
             #endif
+            #ifdef RGBLIGHT_ENABLE
+              rgblight_step();
+            #endif
             #ifdef __AVR__
             writePinLow(E6);
             #endif
@@ -174,7 +179,7 @@ uint16_t muse_counter = 0;
 uint8_t muse_offset = 70;
 uint16_t muse_tempo = 50;
 
-void encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
   if (muse_mode) {
     if (IS_LAYER_ON(_RAISE)) {
       if (clockwise) {
@@ -198,9 +203,10 @@ void encoder_update_user(uint8_t index, bool clockwise) {
       unregister_code(KC_PGUP);
     }
   }
+    return true;
 }
 
-void dip_switch_update_user(uint8_t index, bool active) {
+bool dip_switch_update_user(uint8_t index, bool active) {
     switch (index) {
         case 0:
             if (active) {
@@ -216,6 +222,7 @@ void dip_switch_update_user(uint8_t index, bool active) {
                 muse_mode = false;
             }
     }
+    return true;
 }
 
 
