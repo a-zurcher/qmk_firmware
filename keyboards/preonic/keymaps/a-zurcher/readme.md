@@ -1,6 +1,6 @@
 # a-zurcher Preonic layout
 
-German layout, with a similar keymaps to "regular" keyboards.
+German layout, with keymaps close to "regular" keyboards and a MIDI layer for music production.
 
 Layers:
 - **QWERTZ layer** (Lower+Raise+B)
@@ -16,13 +16,14 @@ Layers:
 |------+------+------+------+------+------+------+------+------+------+------+------|
 | Tab  |   Q  |   W  |   E  |   R  |   T  |   Z  |   U  |   I  |   O  |   P  | Del  |
 |------+------+------+------+------+-------------+------+------+------+------+------|
-|Yakuak|   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   #  | Shift|
+|Termin|   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   #  | Shift|
 |------+------+------+------+------+------|------+------+------+------+------+------|
 | Shift|   Y  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   -  | Enter|
 |------+------+------+------+------+------+------+------+------+------+------+------|
 | Ctrl | SUPER| LAlt | RAlt | Lower|    Space    | Raise| Left | Down |  Up  | Right|
 `-----------------------------------------------------------------------------------'
 ````
+`Termin` key is Super + F12, used for dropdown terminal (Yakuake)
 
 ## MIDI layer
 ```
