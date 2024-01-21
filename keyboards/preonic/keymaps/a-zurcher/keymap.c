@@ -207,6 +207,22 @@ uint16_t muse_counter = 0;
 uint8_t muse_offset = 70;
 uint16_t muse_tempo = 50;
 
+bool led_update_user(led_t led_state) {
+    if (led_state.caps_lock) {
+        rgblight_enable();
+    } else {
+        rgblight_disable();
+    }
+    return true;
+}
+
+extern rgblight_config_t rgblight_config;
+void keyboard_post_init_user(void) {
+  rgblight_config.hue = 100; // only change this
+  rgblight_config.sat = 255;
+  rgblight_config.val = 255;
+}
+
 bool encoder_update_user(uint8_t index, bool clockwise) {
   if (muse_mode) {
     if (IS_LAYER_ON(_RAISE)) {
